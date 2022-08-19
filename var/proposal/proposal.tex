@@ -1,0 +1,21 @@
+\documentclass[a4paper,reprint]{revtex4-2}
+\usepackage[a4paper,margin=0.65in]{geometry}
+\usepackage{physics}
+\usepackage{siunitx}
+
+\begin{document}
+\title{TFpy: A Python package to analyse and fit time-domain experimental data to transfer function model}
+\author{M. Sotgia}
+\altaffiliation{s4942225@studenti.unige.it}
+\affiliation{Dipartimento di Fisica, Università degli Studi di Genova, I-16146 Genova, Italy}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+At the basis of any time-domain physical experiment --such as Gravitational-wave detection \cite{gwpy}-- is often needed to analyse frequency-domain data, frequently presented in the form of a transfer function $H(s)$ for which the phase and amplitude diagrams --the Bode diagrams-- are useful. A tipical application for the Bode diagrams is to fit the transfer function ({\scshape tfm}) to the experimental data. The main problem to adress is the complex-valued model shape for the transfer function $H(s)$. Using the phasor notation the frequency $\nu$ is expressed as $s=2\pi\nu\cdot i$, where $i$ is the complex imaginary unit. This way the gain and phase are implicitly obtained from the transfer function, which in itself can be represented in the complex value notation \[H(s) = \abs{H(s)}\exp[i\phi(s)].\]
+
+\nocite{kontrol}
+\bibliography{references}
+
+\end{document}

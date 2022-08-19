@@ -1,0 +1,8 @@
+__title__ = "signalprocessing"
+__description__ = "Analyze time-domain data and plot Bode diagrams"
+__url__ = "[missing]"
+__version__ = "0.0.1"
+__author__ = "Mattia Sotgia"
+__author_email__ = "mattiasotgia01@gmail.com"
+__license__ = "MIT"
+__copyright__ = "Copyright (c) 2022 Mattia Sotgia"
