@@ -1,6 +1,6 @@
-from signalprocessing.bode import *
 
-from signalprocessing.__version__ import (
+
+from TFpy.__version__ import (
     __title__,
     __description__,
     __url__,
