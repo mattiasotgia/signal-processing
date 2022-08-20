@@ -1,21 +1,29 @@
-\documentclass[a4paper,reprint]{revtex4-2}
-\usepackage[a4paper,margin=0.65in]{geometry}
+\documentclass[a4paper,reprint,preprintnumbers,showkeys]{revtex4-2}
+\usepackage[a4paper,margin=0.6in]{geometry}
 \usepackage{physics}
 \usepackage{siunitx}
 
+\newcommand\tfm{{\scshape tfm}}
+\newcommand\tfpy{TFpy}
+
 \begin{document}
-\title{TFpy: A Python package to analyse and fit time-domain experimental data to transfer function model}
+\title{\tfpy: A Python package to analyse and fit time-domain experimental data to transfer function model}
 \author{M. Sotgia}
-\altaffiliation{s4942225@studenti.unige.it}
+\email{s4942225@studenti.unige.it}
 \affiliation{Dipartimento di Fisica, Università degli Studi di Genova, I-16146 Genova, Italy}
 \date{\today}
+\preprint{\tfpy-PREPRINT}
+\preprint{REV-1 (not for distribution)}
+\keywords{transfer function; complex space model; python package}
 \maketitle
 
 \section{Introduction}
 
-At the basis of any time-domain physical experiment --such as Gravitational-wave detection \cite{gwpy}-- is often needed to analyse frequency-domain data, frequently presented in the form of a transfer function $H(s)$ for which the phase and amplitude diagrams --the Bode diagrams-- are useful. A tipical application for the Bode diagrams is to fit the transfer function ({\scshape tfm}) to the experimental data. The main problem to adress is the complex-valued model shape for the transfer function $H(s)$. Using the phasor notation the frequency $\nu$ is expressed as $s=2\pi\nu\cdot i$, where $i$ is the complex imaginary unit. This way the gain and phase are implicitly obtained from the transfer function, which in itself can be represented in the complex value notation \[H(s) = \abs{H(s)}\exp[i\phi(s)].\]
+At the basis of any time-domain physical experiment --such as Gravitational-wave detection -- is often needed to analyse frequency-domain data, usually presented in the form of a transfer function $H(\nu)$ for which the phase and amplitude diagrams --the Bode diagrams-- are useful. Numerous Python packages already exist, most of them of broader spectrum of use \cite[]{2020SciPy-NMeth,pythoncontrol}, some built to meet very specific use-cases \cite[]{gwpy,kontrol}. All those package refer to Fourier Transform, or Fast Fourier Transform ({\scshape FFT}) to perform frequency-series calculation, and most of them is non used to fit actual experimental data to \tfm, in a sense familiar to us. 
 
-\nocite{kontrol}
+A non-tipical application for the Bode diagrams is to fit the transfer function models (\tfm) to the experimental data. The main problem to adress is the complex-valued model shape for the transfer function $H(\nu)$. Using the phasor notation the frequency $\nu$ is expressed as $s=2\pi\nu\cdot i$, where $i$ is the complex imaginary unit. This way the gain and phase are implicitly obtained from the transfer function, which in itself can be represented in the complex value notation \[H(s) = \abs{H(s)}\exp[i\phi(s)].\]
+
+% \nocite{kontrol}
 \bibliography{references}
 
 \end{document}
