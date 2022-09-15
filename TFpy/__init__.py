@@ -1,5 +1,3 @@
-
-
 from TFpy.__version__ import (
     __title__,
     __description__,
@@ -10,3 +8,4 @@ from TFpy.__version__ import (
     __license__,
     __copyright__,
 )
+
