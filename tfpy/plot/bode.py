@@ -43,7 +43,8 @@ class Bode(figure.Figure):
     
     Parameters
     ----------
-    *filters : `tfpy.[??]` #TODO!
+    *filters : `tfpy.frequencyseries.FrequencySeries``
+        data for dlti type filter in custom format. 
         
 
     split : `bool`, optional, default: `True`
@@ -88,7 +89,7 @@ class Bode(figure.Figure):
             self.add_subplot(1, 2, 1)
             self.add_subplot(1, 2, 2)
         else:
-            pass # TODO: implement non-split version
+            raise NotImplementedError('Non-split Bode plot is yat to be implemented!') # TODO: implement non-split version
 
         if dB:
             self.maxes.set_ylabel('Magnitude (dB)')
