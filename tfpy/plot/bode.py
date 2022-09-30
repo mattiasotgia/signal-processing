@@ -1,6 +1,7 @@
 from matplotlib import figure
 import numpy
 
+from tfpy.frequencyseries import FrequencySeries
 
 def to_db(a):  # pylint: disable=invalid-name
     """Convert the input array into decibels
@@ -70,7 +71,7 @@ class Bode(figure.Figure):
         """
         dB = kwargs.pop('dB', True)
         rad = kwargs.pop('rad',True)
-        split = kwargs.pop('split', True)
+        self._split = kwargs.pop('split', True)
 
         # parse plotting arguments
         figargs = dict()
@@ -83,7 +84,7 @@ class Bode(figure.Figure):
         # generate figure
         super().__init__(**figargs)
 
-        if split:
+        if self._split:
             figargs.setdefault('figsize',(12,5))
             # delete the axes, and create two more
             self.add_subplot(1, 2, 1)
@@ -122,3 +123,44 @@ class Bode(figure.Figure):
         """
         return self.axes[1]
 
+    def add_model(self, data: FrequencySeries, **kwargs):
+        """Add model line for phase/magnitude data
+        
+        Parameters
+        ----------
+        data : `tfpy.frequencyseries.FrequencySeries`
+            data container
+
+        Returns
+        -------
+        plot :  `self`
+        """
+
+        figargs = kwargs
+        figargs.setdefault('color', 'r')
+
+        self.maxes.plot(data.model_frequencies, data.model_magnitude, **figargs, label = data._type['magnitude'])
+        self.paxes.plot(data.model_frequencies, data.model_phase, **figargs, label = data._type['phase'])
+
+        return self
+
+    def add_data(self, data, **kwargs):
+        """Add data points for phase/magnitude data
+        
+        Parameters
+        ----------
+        data : `tfpy.frequencyseries.FrequencySeries`
+            data container
+
+        Returns
+        -------
+        plot :  `self`
+        """
+
+        figargs = kwargs
+        figargs.setdefault('color', 'r')
+
+        self.maxes.errorbar(data.data_frequencies, data.data_magnitude, yerr=data.err_data_magnitude, xerr=data.err_data_frequencies, **figargs, label = data._type['magnitude'])
+        self.paxes.errorbar(data.data_frequencies, data.data_phase, yerr=data.err_data_phase, xerr=data.err_data_frequencies, **figargs, label = data._type['phase'])
+
+        return self
